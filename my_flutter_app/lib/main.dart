@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:my_flutter_app/pages/homePage/homePage.dart';
-import 'package:my_flutter_app/pages/calculator/calculator.dart';
+// import 'package:my_flutter_app/pages/calculator/calculator.dart';
+import 'package:my_flutter_app/pages/flipkart/filpkartMain.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page 1'),
-      home: const Calculator(),
+      home: const FilpkartClone(),
     );
   }
 }

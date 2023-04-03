@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
-import '../../style/color.dart';
+import '../../style/calculator/color.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
