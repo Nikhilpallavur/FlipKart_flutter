@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/provider/cartItem.dart';
 import 'package:provider/provider.dart';
 // import 'package:my_flutter_app/pages/homePage/homePage.dart';
 // import 'package:my_flutter_app/pages/calculator/calculator.dart';
 import 'package:my_flutter_app/pages/flipkart/filpkartMain.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
-  );
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider())
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

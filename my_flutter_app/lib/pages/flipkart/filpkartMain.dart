@@ -1,6 +1,6 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'landingPage/home.dart';
+import 'landingPage/main.dart';
 
 class FilpkartClone extends StatelessWidget {
   const FilpkartClone({super.key});

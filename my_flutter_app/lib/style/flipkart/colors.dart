@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 
 Color? APP_COLOR = Colors.white;
+Color? APP_PRIMARY_BG_COLOR = const Color.fromARGB(255, 251, 251, 249);
 Color? APP_PRIMARY_COLOR = Colors.blue;
+Color? APP_GREEN_COLOR = Colors.green;
 Color? APP_ACTIVE_COLOR = Colors.blue;
 Color? APP_TEXT_COLOR = Colors.black;
 Color? ICON_PRIMARY_COLOR = Colors.white;

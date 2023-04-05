@@ -1,7 +1,10 @@
-
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/pages/account.dart';
+import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/pages/cart.dart';
+import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/pages/category.dart';
+import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/pages/home.dart';
 
 import '../../../../../utils/flipkart/variables/variables.dart';
 
@@ -24,16 +27,19 @@ class _FilpKartRenderState extends State<FilpKartBottomTabRender> {
 
     switch (widget.selectedTab.toString()) {
       case 'Home':
-        return Text('Home');
-        break;
+        return const Home();
+
       case 'Categories':
-        return Text('Categories');
-        break;
+        return const Category();
+
       case 'Account':
-        return Text('Account');
-        break;
+        return const BasicContent();
+
+      case 'Cart':
+        return const CartPage();
+
       default:
-        return Text('Home');
+        return const Home();
     }
   }
 }
