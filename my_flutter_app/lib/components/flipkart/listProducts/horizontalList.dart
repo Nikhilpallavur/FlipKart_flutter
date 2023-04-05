@@ -1,12 +1,20 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:my_flutter_app/components/flipkart/layout/card/simpleCard.dart';
+import 'package:my_flutter_app/components/flipkart/image/networkImage.dart';
+import 'package:my_flutter_app/utils/flipkart/variables/styleVariables.dart';
 
 class SimpleHorizontalList extends StatefulWidget {
-  final listItems;
-  final onClickItem;
-  const SimpleHorizontalList(
-      {super.key, required this.listItems, this.onClickItem});
+  final NullableIndexedWidgetBuilder itemBuilder;
+  final int itemCount;
+  final EdgeInsetsGeometry? padding;
+  const SimpleHorizontalList({
+    super.key,
+    required this.itemBuilder,
+    required this.itemCount,
+    this.padding,
+  });
 
   @override
   State<SimpleHorizontalList> createState() => _SimpleHorizontalListState();
@@ -22,28 +30,9 @@ class _SimpleHorizontalListState extends State<SimpleHorizontalList> {
         dragStartBehavior: DragStartBehavior.start,
         clipBehavior: Clip.hardEdge,
         scrollDirection: Axis.horizontal,
-        itemCount: widget.listItems.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-              onTap: () {
-                widget.onClickItem(widget.listItems[index]);
-                // context.read<CartProvider>().add(products[index]);
-              },
-              child: Card(
-                color: Colors.white,
-                child: SizedBox(
-                    height: 160,
-                    width: 110,
-                    child: CachedNetworkImage(
-                      imageUrl: 'https://via.placeholder.com/200x150',
-                    )
-                    // Image.network(
-                    //   widget.listItems[index].productURL,
-                    //   fit: BoxFit.contain,
-                    // ),
-                    ),
-              ));
-        },
+        itemCount: widget.itemCount,
+        padding: widget.padding,
+        itemBuilder: widget.itemBuilder,
       ),
     );
   }

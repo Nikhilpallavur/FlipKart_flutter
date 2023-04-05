@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:my_flutter_app/components/flipkart/button/button.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/tabs/flipkartHome.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/groceryTab/main.dart';
-import 'package:my_flutter_app/utils/flipkart/variables/variables.dart';
+import 'package:my_flutter_app/utils/flipkart/variables/tabVariables.dart';
 import '../../../style/flipkart/colors.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/tabs/tabs.dart';
 

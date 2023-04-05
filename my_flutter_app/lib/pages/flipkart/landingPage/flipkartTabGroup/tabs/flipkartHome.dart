@@ -6,7 +6,7 @@ import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/pages
 import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/pages/category.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/pages/home.dart';
 
-import '../../../../../utils/flipkart/variables/variables.dart';
+import '../../../../../utils/flipkart/variables/imageVariables.dart';
 
 class FilpKartBottomTabRender extends StatefulWidget {
   final String selectedTab;
@@ -33,7 +33,7 @@ class _FilpKartRenderState extends State<FilpKartBottomTabRender> {
         return const Category();
 
       case 'Account':
-        return const BasicContent();
+        return const Account();
 
       case 'Cart':
         return const CartPage();
