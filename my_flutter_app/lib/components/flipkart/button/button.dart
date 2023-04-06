@@ -16,7 +16,7 @@ import '../../../style/flipkart/colors.dart';
 //     child: Text(
 //       text,
 //       style:
-//           TextStyle(fontSize: 18, color: color, fontWeight: FontWeight.normal),
+//           TextStyle(fontSize: 18, color: color, fontwidth: Fontwidth.normal),
 //     ),
 //   );
 // }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/provider/cartItem.dart';
 import 'package:my_flutter_app/style/flipkart/colors.dart';
-import 'package:my_flutter_app/utils/flipkart/variables/variables.dart';
+import 'package:my_flutter_app/utils/flipkart/variables/tabVariables.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -107,7 +107,7 @@ class _FilpKartBottomState extends State<FilpKartBottom> {
           icon,
           size: 20,
           weight: 800,
-          color: APP_TEXT_COLOR,
+          color: APP_ICON_DEFAULT_COLOR,
         ),
         label: name,
         activeIcon: Icon(

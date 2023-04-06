@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/components/flipkart/image/networkImage.dart';
 import 'package:my_flutter_app/utils/flipkart/data/products.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:my_flutter_app/utils/flipkart/variables/variables.dart';
+import 'package:my_flutter_app/utils/flipkart/variables/imageVariables.dart';
 
 class Category extends StatefulWidget {
   const Category({super.key});
@@ -14,9 +15,9 @@ class _CategoryState extends State<Category> {
   List<Product> products = [];
   @override
   void initState() {
-    for (var i = 0; i < 100; i++) {
-      products.add(Product(
-          i, "Product $i", DUMMY_IMAGES[i % DUMMY_IMAGES.length], "100$i"));
+    for (var i = 0; i < 200; i++) {
+      products.add(Product(i, "Product $i",
+          DUMMY_IMAGES[i % DUMMY_IMAGES.length], "100$i", 'DUMMY_IMAGES'));
     }
 
     super.initState();
@@ -45,9 +46,8 @@ class _CategoryState extends State<Category> {
                         child: Container(
                             child:
                                 // Text(products[index].productName),
-                                Image.network(
-                      products[index].productURL,
-                      fit: BoxFit.cover,
+                                NetWorkImage(
+                      url: products[index].productURL,
                     ))))),
       ),
     );
