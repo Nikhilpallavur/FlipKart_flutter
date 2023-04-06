@@ -33,7 +33,7 @@ class _FilpKartRenderState extends State<FilpKartBottomTabRender> {
         return const Category();
 
       case 'Account':
-        return const BasicContent();
+        return const Account();
 
       case 'Cart':
         return const CartPage();

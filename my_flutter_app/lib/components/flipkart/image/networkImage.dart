@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 
 class NetWorkImage extends StatefulWidget {
   final String url;
@@ -36,6 +37,7 @@ class _NetWorkImageState extends State<NetWorkImage> {
         width: widget.height,
         height: widget.width,
         color: const Color.fromARGB(255, 238, 246, 252),
+        // child: const BlurHash(hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj'),
       ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );

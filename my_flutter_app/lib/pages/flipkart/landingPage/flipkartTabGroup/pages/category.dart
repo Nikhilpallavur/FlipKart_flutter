@@ -28,28 +28,26 @@ class _CategoryState extends State<Category> {
     return Container(
       // height: MediaQuery.of(context).size.height- 200,
       height: MediaQuery.of(context).size.height - 173,
-      child: Expanded(
-        child: GridView.custom(
-            shrinkWrap: true,
-            gridDelegate: SliverQuiltedGridDelegate(
-              crossAxisCount: 4,
-              repeatPattern: QuiltedGridRepeatPattern.inverted,
-              pattern: [
-                QuiltedGridTile(2, 2),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 1),
-                QuiltedGridTile(1, 2),
-              ],
-            ),
-            childrenDelegate:
-                SliverChildBuilderDelegate((context, index) => Card(
-                        child: Container(
-                            child:
-                                // Text(products[index].productName),
-                                NetWorkImage(
-                      url: products[index].productURL,
-                    ))))),
-      ),
+
+      child: GridView.custom(
+          shrinkWrap: true,
+          gridDelegate: SliverQuiltedGridDelegate(
+            crossAxisCount: 4,
+            repeatPattern: QuiltedGridRepeatPattern.inverted,
+            pattern: [
+              QuiltedGridTile(2, 2),
+              QuiltedGridTile(1, 1),
+              QuiltedGridTile(1, 1),
+              QuiltedGridTile(1, 2),
+            ],
+          ),
+          childrenDelegate: SliverChildBuilderDelegate((context, index) => Card(
+                  child: Container(
+                      child:
+                          // Text(products[index].productName),
+                          NetWorkImage(
+                url: products[index].productURL,
+              ))))),
     );
   }
 }

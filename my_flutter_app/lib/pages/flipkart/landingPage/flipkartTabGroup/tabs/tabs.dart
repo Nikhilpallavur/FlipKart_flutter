@@ -7,7 +7,9 @@ import 'package:badges/badges.dart' as badges;
 
 class FilpKartBottom extends StatefulWidget {
   final Function callback;
-  const FilpKartBottom({super.key, required this.callback});
+  final String selectedTab;
+  const FilpKartBottom(
+      {super.key, required this.callback, required this.selectedTab});
 
   @override
   State<FilpKartBottom> createState() => _FilpKartBottomState();
@@ -15,12 +17,31 @@ class FilpKartBottom extends StatefulWidget {
 
 class _FilpKartBottomState extends State<FilpKartBottom> {
   var _curIndex = 0;
-  var selectedTab = 'Home';
+
+  @override
+  void initState() {
+    switch (widget.selectedTab.toString()) {
+      case 'Home':
+        _curIndex = 0;
+        break;
+      case 'Categories':
+        _curIndex = 1;
+        break;
+      case 'Account':
+        _curIndex = 2;
+        break;
+      case 'Cart':
+        _curIndex = 3;
+        break;
+      default:
+        _curIndex = 0;
+        break;
+    }
+    // TODO: implement initState
+    super.initState();
+  }
 
   void updateState(value) {
-    setState(() {
-      selectedTab = value;
-    });
     widget.callback(value);
   }
 

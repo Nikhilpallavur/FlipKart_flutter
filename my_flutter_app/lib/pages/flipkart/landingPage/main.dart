@@ -8,19 +8,29 @@ import 'package:my_flutter_app/utils/flipkart/variables/tabVariables.dart';
 import '../../../style/flipkart/colors.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/flipkartTabGroup/tabs/tabs.dart';
 
-var Flipkart = 'Flipkart';
-var Grocery = 'Grocery';
-
 class MyHomePageMain extends StatefulWidget {
-  const MyHomePageMain({super.key});
+  final String selectedButtonProps;
+  final String selectedTabProps;
+  const MyHomePageMain(
+      {super.key,
+      required this.selectedButtonProps,
+      required this.selectedTabProps});
 
   @override
   State<MyHomePageMain> createState() => _MyHomePage();
 }
 
 class _MyHomePage extends State<MyHomePageMain> {
-  var selectedButton = Flipkart;
+  var selectedButton = FLIPKART;
   var selectedTab = BOTTOM_TABS.Home.name;
+
+  @override
+  void initState() {
+    selectedButton = widget.selectedButtonProps;
+    selectedTab = widget.selectedTabProps;
+    // TODO: implement initState
+    super.initState();
+  }
 
   void onButtonClick(value) {
     setState(() {
@@ -37,15 +47,15 @@ class _MyHomePage extends State<MyHomePageMain> {
 
   @override
   Widget checkRender() {
-    return selectedButton == Flipkart
+    return selectedButton == FLIPKART
         ? FilpKartBottomTabRender(selectedTab: selectedTab)
         : GroceryPage();
   }
 
   @override
   Widget checkBottom() {
-    return selectedButton == Flipkart
-        ? FilpKartBottom(callback: onChangeTab)
+    return selectedButton == FLIPKART
+        ? FilpKartBottom(callback: onChangeTab, selectedTab: selectedTab)
         : Container(
             height: .5,
           );
@@ -69,37 +79,37 @@ class _MyHomePage extends State<MyHomePageMain> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             CustomIconButton(
-                                text: Flipkart,
-                                onPressed: () => onButtonClick(Flipkart),
-                                bgColor: selectedButton == Flipkart
+                                text: FLIPKART,
+                                onPressed: () => onButtonClick(FLIPKART),
+                                bgColor: selectedButton == FLIPKART
                                     ? APP_PRIMARY_COLOR
                                     : APP_PRIMARY_BG_COLOR,
-                                color: selectedButton == Flipkart
+                                color: selectedButton == FLIPKART
                                     ? APP_COLOR
                                     : APP_TEXT_COLOR,
                                 padding: const EdgeInsets.only(
                                     left: 35, right: 35, top: 10, bottom: 10),
                                 icon: Icon(
                                   Icons.shopping_bag,
-                                  color: selectedButton == Flipkart
+                                  color: selectedButton == FLIPKART
                                       ? Colors.yellow
                                       : Colors.blue,
                                   size: 20.0,
                                 )),
                             CustomIconButton(
-                                text: Grocery,
-                                onPressed: () => onButtonClick(Grocery),
-                                bgColor: selectedButton == Grocery
+                                text: GROCERY,
+                                onPressed: () => onButtonClick(GROCERY),
+                                bgColor: selectedButton == GROCERY
                                     ? APP_GREEN_COLOR
                                     : APP_PRIMARY_BG_COLOR,
-                                color: selectedButton == Grocery
+                                color: selectedButton == GROCERY
                                     ? APP_COLOR
                                     : APP_TEXT_COLOR,
                                 padding: const EdgeInsets.only(
                                     left: 35, right: 35, top: 10, bottom: 10),
                                 icon: Icon(
                                   Icons.store,
-                                  color: selectedButton == Flipkart
+                                  color: selectedButton == FLIPKART
                                       ? Colors.green
                                       : Colors.yellow,
                                   size: 20.0,
