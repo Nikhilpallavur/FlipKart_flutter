@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606972380555",
+    "project_id": "f-kart-f5d83",
+    "storage_bucket": "f-kart-f5d83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606972380555:android:334d08b4f72fce89c81b8e",
+        "android_client_info": {
+          "package_name": "com.example.my_flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606972380555-rqaqgl39usoi44bmveecv5fr9abud2dk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ9yPx8yZ0RMdKh3bpLMDjkK-kJSobOJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606972380555-rqaqgl39usoi44bmveecv5fr9abud2dk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

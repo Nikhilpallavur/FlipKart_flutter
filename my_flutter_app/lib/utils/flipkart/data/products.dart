@@ -4,8 +4,9 @@ class Product {
   String productURL;
   String productPrice;
   String productGroup;
+  int quantity;
   Product(this.productId, this.productName, this.productURL, this.productPrice,
-      this.productGroup);
+      this.productGroup, this.quantity);
 }
 
 class ProductFilter {

@@ -24,8 +24,8 @@ class _ProductListState extends State<ProductList> {
   void changeValue(name, Arr, GroupName) {
     itemList.addAll(Arr);
     for (var i = 0; i < 102; i++) {
-      products
-          .add(Product(i, "$name $i", Arr[i % Arr.length], "100$i", GroupName));
+      products.add(
+          Product(i, "$name $i", Arr[i % Arr.length], "100$i", GroupName, 0));
     }
   }
 

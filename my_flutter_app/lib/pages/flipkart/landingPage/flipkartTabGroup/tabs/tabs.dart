@@ -59,10 +59,6 @@ class _FilpKartBottomState extends State<FilpKartBottom> {
             activeIcon: Icons.book_outlined,
             icon: Icons.book_outlined,
             name: BOTTOM_TABS.Categories.name),
-        BottomButton(
-            activeIcon: Icons.assignment_ind_outlined,
-            icon: Icons.assignment_ind_outlined,
-            name: BOTTOM_TABS.Account.name),
         BottomNavigationBarItem(
             icon: Consumer<CartProvider>(
                 builder: ((context, value, child) => value.products.length != 0
@@ -98,6 +94,10 @@ class _FilpKartBottomState extends State<FilpKartBottom> {
               size: 20,
               color: APP_ACTIVE_COLOR,
             )),
+        BottomButton(
+            activeIcon: Icons.assignment_ind_outlined,
+            icon: Icons.assignment_ind_outlined,
+            name: BOTTOM_TABS.Account.name),
       ],
       type: BottomNavigationBarType.fixed,
       currentIndex: _curIndex,
@@ -111,10 +111,10 @@ class _FilpKartBottomState extends State<FilpKartBottom> {
             updateState(BOTTOM_TABS.Categories.name);
             break;
           case 2:
-            updateState(BOTTOM_TABS.Account.name);
+            updateState(BOTTOM_TABS.Cart.name);
             break;
           case 3:
-            updateState(BOTTOM_TABS.Cart.name);
+            updateState(BOTTOM_TABS.Account.name);
             break;
         }
       },

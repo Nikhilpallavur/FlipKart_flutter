@@ -17,7 +17,7 @@ class _CategoryState extends State<Category> {
   void initState() {
     for (var i = 0; i < 200; i++) {
       products.add(Product(i, "Product $i",
-          DUMMY_IMAGES[i % DUMMY_IMAGES.length], "100$i", 'DUMMY_IMAGES'));
+          DUMMY_IMAGES[i % DUMMY_IMAGES.length], "100$i", 'DUMMY_IMAGES', 0));
     }
 
     super.initState();

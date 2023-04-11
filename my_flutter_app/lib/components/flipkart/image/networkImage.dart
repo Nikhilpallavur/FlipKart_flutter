@@ -9,12 +9,14 @@ class NetWorkImage extends StatefulWidget {
   final BoxFit objectFit;
   final double height;
   final double width;
+  final AlignmentGeometry? alignment;
   const NetWorkImage(
       {super.key,
       required this.url,
       this.objectFit = BoxFit.contain,
       this.height = 160,
-      this.width = 120});
+      this.width = 120,
+      this.alignment});
 
   @override
   State<NetWorkImage> createState() => _NetWorkImageState();
@@ -30,7 +32,7 @@ class _NetWorkImageState extends State<NetWorkImage> {
           image: DecorationImage(
               image: imageProvider,
               fit: widget.objectFit,
-              alignment: Alignment.topCenter),
+              alignment: widget.alignment ?? Alignment.topCenter),
         ),
       ),
       placeholder: (BuildContext context, String url) => Container(

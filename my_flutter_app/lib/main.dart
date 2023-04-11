@@ -1,11 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/pages/flipkart/authentication/login.dart';
 import 'package:my_flutter_app/provider/cartItem.dart';
 import 'package:provider/provider.dart';
 // import 'package:my_flutter_app/pages/homePage/homePage.dart';
 // import 'package:my_flutter_app/pages/calculator/calculator.dart';
 import 'package:my_flutter_app/pages/flipkart/filpkartMain.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider())
   ], child: MyApp()));
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page 1'),
-      home: const FlipkartClone(),
+      home: const Login(),
     );
   }
 }
