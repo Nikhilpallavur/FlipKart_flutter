@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/main.dart';
+import 'package:my_flutter_app/style/flipkart/colors.dart';
 import 'package:my_flutter_app/utils/flipkart/variables/tabVariables.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -19,6 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: APP_BAR_BG,
         title: const Text("Signup Page"),
       ),
       body: SingleChildScrollView(

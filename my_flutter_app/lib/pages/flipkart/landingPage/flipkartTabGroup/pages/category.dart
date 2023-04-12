@@ -16,7 +16,7 @@ class _CategoryState extends State<Category> {
   @override
   void initState() {
     for (var i = 0; i < 200; i++) {
-      products.add(Product(i, "Product $i",
+      products.add(Product('$i', "Product $i",
           DUMMY_IMAGES[i % DUMMY_IMAGES.length], "100$i", 'DUMMY_IMAGES', 0));
     }
 
@@ -46,7 +46,7 @@ class _CategoryState extends State<Category> {
                       child:
                           // Text(products[index].productName),
                           NetWorkImage(
-                url: products[index].productURL,
+                url: products[index].url,
               ))))),
     );
   }

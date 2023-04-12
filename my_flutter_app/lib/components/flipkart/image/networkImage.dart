@@ -32,7 +32,7 @@ class _NetWorkImageState extends State<NetWorkImage> {
           image: DecorationImage(
               image: imageProvider,
               fit: widget.objectFit,
-              alignment: widget.alignment ?? Alignment.topCenter),
+              alignment: widget.alignment ?? Alignment.center),
         ),
       ),
       placeholder: (BuildContext context, String url) => Container(

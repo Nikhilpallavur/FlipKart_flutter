@@ -14,3 +14,4 @@ Color? BUTTON_ACTIVE_COLOR = Colors.blue;
 Color? BUTTON_TEXT_COLOR = Colors.white;
 Color? DISABLE_COLOR = Colors.grey[400];
 Color? BOOK_BUTTON_BG_COLOR = Colors.amber;
+Color? APP_BAR_BG = Colors.indigoAccent[400];

@@ -51,21 +51,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(
-                                  width: 1000,
                                   height: 300,
                                   color: Colors.white,
                                   child: Padding(
                                       padding: EdgeInsets.only(
                                           bottom: LARGE_IMAGE_PADDING),
                                       child: SizedBox(
-                                          width: 1000,
-                                          height: 300,
                                           child: NetWorkImage(
-                                            url: widget.itemData.productURL,
-                                            width: 1000,
-                                            height: 250,
-                                            objectFit: BoxFit.contain,
-                                          )))),
+                                        url: widget.itemData.url,
+                                        objectFit: BoxFit.contain,
+                                      )))),
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: MAIN_PADDING_HORIZONTAL,

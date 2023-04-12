@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/style/flipkart/colors.dart';
 // import 'package:flutter_project/CreateNewPasswordPage.dart';
 // import 'package:flutter_sms/flutter_sms.dart';
 
@@ -32,6 +33,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: APP_BAR_BG,
         title: const Text("Reset Password Page"),
       ),
       body: SingleChildScrollView(
@@ -40,7 +42,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
             Padding(
               padding: const EdgeInsets.only(top: 60.0),
               child: Center(
-                child: Container(
+                child: SizedBox(
                     width: 200,
                     height: 150,
                     child: Image.asset('assets/images/flutter-logo.png')),

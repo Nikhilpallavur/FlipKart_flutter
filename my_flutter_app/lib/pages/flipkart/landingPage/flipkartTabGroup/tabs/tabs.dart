@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/provider/cartItem.dart';
 import 'package:my_flutter_app/style/flipkart/colors.dart';
+import 'package:my_flutter_app/utils/flipkart/data/products.dart';
+import 'package:my_flutter_app/utils/flipkart/firebase/product.dart';
 import 'package:my_flutter_app/utils/flipkart/variables/tabVariables.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
@@ -27,10 +29,10 @@ class _FilpKartBottomState extends State<FilpKartBottom> {
       case 'Categories':
         _curIndex = 1;
         break;
-      case 'Account':
+      case 'Cart':
         _curIndex = 2;
         break;
-      case 'Cart':
+      case 'Account':
         _curIndex = 3;
         break;
       default:
@@ -60,34 +62,37 @@ class _FilpKartBottomState extends State<FilpKartBottom> {
             icon: Icons.book_outlined,
             name: BOTTOM_TABS.Categories.name),
         BottomNavigationBarItem(
-            icon: Consumer<CartProvider>(
-                builder: ((context, value, child) => value.products.length != 0
-                    ? Container(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              badges.Badge(
-                                badgeStyle: const badges.BadgeStyle(
-                                  badgeColor: Colors.red,
-                                ),
-                                position: badges.BadgePosition.topEnd(top: -14),
-                                badgeContent: Text(
-                                  value?.products?.length?.toString() ?? '0',
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                child: Icon(
-                                  Icons.shopping_cart_outlined,
-                                  color: Colors.grey[800],
-                                ),
-                              ),
-                            ]),
-                      )
-                    : Icon(
-                        Icons.shopping_cart_outlined,
-                        size: 20,
-                        weight: 800,
-                        color: APP_TEXT_COLOR,
-                      ))),
+            icon: StreamBuilder<List<Product>>(
+                stream: getCartProduct(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final products = snapshot.data!;
+                    return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          badges.Badge(
+                            badgeStyle: const badges.BadgeStyle(
+                              badgeColor: Colors.red,
+                            ),
+                            position: badges.BadgePosition.topEnd(top: -14),
+                            badgeContent: Text(
+                              products.length.toString(),
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            child: Icon(
+                              Icons.shopping_cart_outlined,
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                        ]);
+                  }
+                  return Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 20,
+                    weight: 800,
+                    color: APP_TEXT_COLOR,
+                  );
+                }),
             label: BOTTOM_TABS.Cart.name,
             activeIcon: Icon(
               Icons.shopping_cart_outlined,
