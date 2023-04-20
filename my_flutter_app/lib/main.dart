@@ -51,11 +51,13 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
         ),
         // home: const MyHomePage(title: 'Flutter Demo Home Page 1'),
-        // home: const Login(),
-        home: MyHomePageMain(
-          selectedButtonProps: FLIPKART,
-          selectedTabProps: BOTTOM_TABS.Home.name,
-        ));
+
+        home: const Login());
+
+    // home: MyHomePageMain(
+    //   selectedButtonProps: FLIPKART,
+    //   selectedTabProps: BOTTOM_TABS.Home.name,
+    // ));
   }
 }
 // class MyApp extends StatelessWidget {
