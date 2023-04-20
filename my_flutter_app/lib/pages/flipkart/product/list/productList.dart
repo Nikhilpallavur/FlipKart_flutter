@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:my_flutter_app/components/flipkart/layout/card/simpleCard.dart';
 import 'package:my_flutter_app/components/flipkart/image/networkImage.dart';
+import 'package:my_flutter_app/components/flipkart/warning/noData/noData.dart';
 import 'package:my_flutter_app/pages/flipkart/product/productDetails/productDetails.dart';
 import 'package:my_flutter_app/style/flipkart/colors.dart';
 import 'package:my_flutter_app/utils/flipkart/data/products.dart';
@@ -21,14 +22,13 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-  List<dynamic> itemList = [];
-
   void onClickCard(data) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                ProductDetails(itemData: data, itemList: itemList)));
+            builder: (context) => ProductDetails(
+                  itemData: data,
+                )));
   }
 
   Stream<List<Product>> getCategory() => FirebaseFirestore.instance
@@ -90,7 +90,11 @@ class _ProductListState extends State<ProductList> {
                       },
                     );
                   }
-                  return const Text('No data');
+                  return SizedBox(
+                      width: 350,
+                      height: 150,
+                      /*decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(50.0)),*/
+                      child: NoDataContainer());
                 }),
           )
         ]));

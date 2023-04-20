@@ -21,19 +21,19 @@ class _SignUpPageState extends State<SignUpPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: APP_BAR_BG,
-        title: const Text("Signup Page"),
+        title: const Text("Sign up"),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 30.0),
               child: Center(
                 child: Container(
-                    width: 350,
-                    height: 120,
+                    width: 380,
+                    height: 350,
                     /*decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Image.asset('assets/images/login.png')),
+                    child: Image.asset('assets/images/signup.webp')),
               ),
             ),
             Padding(
@@ -73,7 +73,7 @@ class _SignUpPageState extends State<SignUpPage> {
               padding: const EdgeInsets.only(top: 15),
               child: Container(
                 height: 50,
-                width: 250,
+                width: 380,
                 decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(20)),

@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:my_flutter_app/utils/flipkart/data/products.dart';
 import 'package:my_flutter_app/utils/flipkart/firebase/product.dart';
-import 'package:my_flutter_app/utils/flipkart/variables/firebase/firebaseVariable.dart';
 
 class CartProvider extends ChangeNotifier {
   List<Product> products = [];

@@ -1,8 +1,12 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_flutter_app/components/flipkart/image/networkImage.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/main.dart';
+import 'package:my_flutter_app/pages/flipkart/product/myOrders/myOrders.dart';
+import 'package:my_flutter_app/pages/riverpod/OrderList.dart';
+import 'package:my_flutter_app/pages/riverpod/wishlist.dart';
 import 'package:my_flutter_app/provider/cartItem.dart';
 import 'package:my_flutter_app/style/flipkart/colors.dart';
 import 'package:my_flutter_app/utils/flipkart/data/products.dart';
@@ -10,18 +14,18 @@ import 'package:my_flutter_app/utils/flipkart/variables/styleVariables.dart';
 import 'package:my_flutter_app/utils/flipkart/variables/tabVariables.dart';
 import 'package:provider/provider.dart';
 
-class ProductDetails extends StatefulWidget {
+class ProductDetails extends ConsumerStatefulWidget {
   final Product itemData;
-  final List<dynamic> itemList;
 
-  const ProductDetails(
-      {super.key, required this.itemData, required this.itemList});
+  const ProductDetails({super.key, required this.itemData});
 
   @override
-  State<ProductDetails> createState() => _ProductDetailsState();
+  ConsumerState<ProductDetails> createState() => _ProductDetailsState();
 }
 
-class _ProductDetailsState extends State<ProductDetails> {
+class _ProductDetailsState extends ConsumerState<ProductDetails> {
+  var favorite = false;
+
   void addToCartOnClick() {
     context.read<CartProvider>().add(widget.itemData);
     // Navigator.pop(context, true);
@@ -34,8 +38,46 @@ class _ProductDetailsState extends State<ProductDetails> {
                 )));
   }
 
+  checkFavoriteIcon() {
+    if (favorite) {
+      return const Icon(
+        Icons.favorite,
+        size: 30,
+        color: Colors.red,
+      );
+    }
+    return const Icon(
+      Icons.favorite_border,
+      size: 30,
+      color: Colors.black26,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    var wishList = ref.watch(wishListProductsProvider.notifier);
+    var orderList = ref.watch(orderListProductsProvider.notifier);
+    var wishListProducts = ref.watch(wishListProductsProvider);
+
+    if (wishListProducts.contains(widget.itemData)) {
+      setState(() {
+        favorite = true;
+      });
+    }
+
+    void addToClickFavorite() {
+      setState(() {
+        favorite = !favorite;
+      });
+      wishList.add(widget.itemData);
+    }
+
+    void addToClickOrder() {
+      orderList.add(widget.itemData);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const OrderList()));
+    }
+
     return Scaffold(
         body: SafeArea(
             child: SizedBox(
@@ -161,6 +203,27 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 color: APP_ICON_DEFAULT_COLOR,
                               )),
                         ),
+                        Positioned(
+                          top: 20,
+                          right: MAIN_PADDING_HORIZONTAL,
+                          child: GestureDetector(
+                              onTap: () => addToClickFavorite(),
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Colors.black12,
+                                          blurRadius: 3.0,
+                                          spreadRadius: 1.0,
+                                        )
+                                      ],
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(100)),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(6.0),
+                                    child: checkFavoriteIcon(),
+                                  ))),
+                        ),
                       ])),
                   Positioned(
                     left: 0,
@@ -179,7 +242,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               text: 'Book Now',
                               bgColor: BOOK_BUTTON_BG_COLOR,
                               textColor: BUTTON_TEXT_COLOR,
-                              onPress: () => addToCartOnClick())
+                              onPress: () => addToClickOrder())
                         ]),
                   ),
                 ]))));

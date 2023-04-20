@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_flutter_app/pages/flipkart/authentication/SignUpPage.dart';
 import 'package:my_flutter_app/pages/flipkart/authentication/forgotPassword.dart';
 import 'package:my_flutter_app/pages/flipkart/landingPage/main.dart';
+import 'package:my_flutter_app/utils/flipkart/variables/localStorage.dart';
 import 'package:my_flutter_app/utils/flipkart/variables/styleVariables.dart';
 import 'package:my_flutter_app/utils/flipkart/variables/tabVariables.dart';
+import 'package:localstorage/localstorage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -17,12 +19,18 @@ class _LoginDemoState extends State<Login> {
   TextEditingController emailAuth = TextEditingController();
   TextEditingController passwordAuth = TextEditingController();
 
+  final LocalStorage storage = LocalStorage(ACCOUNT_JSON);
+
   void loginOnClick() {
     if (emailAuth.text != '') {
+      final loginData = [
+        {'email': emailAuth.text, 'password': passwordAuth.text}
+      ];
       FirebaseAuth.instance
           .signInWithEmailAndPassword(
               email: emailAuth.text, password: passwordAuth.text)
           .then((value) {
+        // storage.setItem(LOGIN_LCL, loginData);
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -49,10 +57,10 @@ class _LoginDemoState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                  width: 350,
-                  height: 120,
+                  width: 380,
+                  height: 380,
                   /*decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(50.0)),*/
-                  child: Image.asset('assets/images/login.png')),
+                  child: Image.asset('assets/images/Login.jpeg')),
               TextField(
                 controller: emailAuth,
                 decoration: const InputDecoration(
@@ -70,21 +78,21 @@ class _LoginDemoState extends State<Login> {
                         labelText: 'Password',
                         hintText: 'Enter Your Password')),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: InkWell(
-                    child: const Text(
-                      'ForgotPassword',
-                      style: TextStyle(color: Colors.blue, fontSize: 15),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const ForgotPasswordPage()));
-                    }),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 15),
+              //   child: InkWell(
+              //       child: const Text(
+              //         'ForgotPassword',
+              //         style: TextStyle(color: Colors.blue, fontSize: 15),
+              //       ),
+              //       onTap: () {
+              //         Navigator.push(
+              //             context,
+              //             MaterialPageRoute(
+              //                 builder: (context) =>
+              //                     const ForgotPasswordPage()));
+              //       }),
+              // ),
               GestureDetector(
                 onTap: () => loginOnClick(),
                 child: Padding(

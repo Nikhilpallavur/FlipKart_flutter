@@ -1,54 +1,52 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_flutter_app/components/flipkart/image/networkImage.dart';
 import 'package:my_flutter_app/components/flipkart/layout/card/simpleCard.dart';
-import 'package:my_flutter_app/pages/flipkart/product/productDetails/productDetails.dart';
-import 'package:my_flutter_app/provider/cartItem.dart';
-import 'package:my_flutter_app/utils/flipkart/data/products.dart';
-import 'package:my_flutter_app/utils/flipkart/firebase/product.dart';
-import 'package:my_flutter_app/utils/flipkart/variables/firebase/firebaseVariable.dart';
-import 'package:my_flutter_app/utils/flipkart/variables/styleVariables.dart';
 import 'package:my_flutter_app/components/flipkart/warning/noData/noData.dart';
-import 'package:provider/provider.dart';
+import 'package:my_flutter_app/pages/riverpod/OrderList.dart';
+import 'package:my_flutter_app/style/flipkart/colors.dart';
+import 'package:my_flutter_app/utils/flipkart/data/products.dart';
+import 'package:my_flutter_app/utils/flipkart/variables/styleVariables.dart';
 
-class CartPage extends StatefulWidget {
-  const CartPage({super.key});
+class OrderList extends ConsumerStatefulWidget {
+  const OrderList({super.key});
 
   @override
-  State<CartPage> createState() => _CartPageState();
+  ConsumerState<OrderList> createState() => _OrderListState();
 }
 
-class _CartPageState extends State<CartPage> {
-  void onClickCard(Product product) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ProductDetails(
-                  itemData: product,
-                )));
-  }
-
+class _OrderListState extends ConsumerState<OrderList> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.only(
-            left: MAIN_PADDING_HORIZONTAL,
-            right: MAIN_PADDING_HORIZONTAL,
-            top: MAIN_PADDING_VERTICAL),
-        child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: StreamBuilder<List<Product>>(
-                stream: getCartProduct(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    final products = snapshot.data!;
-                    CartProvider().updateList(products);
-                    return ListView.builder(
+    void onClickCard() {}
+
+    var products = ref.watch(orderListProductsProvider);
+    // List<Product> products = [];
+    return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: APP_BAR_BG,
+          title: const Text("My Order list"),
+        ),
+        body: Padding(
+            padding: EdgeInsets.only(
+                left: MAIN_PADDING_HORIZONTAL,
+                right: MAIN_PADDING_HORIZONTAL,
+                top: MAIN_PADDING_VERTICAL),
+            child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: products.isEmpty
+                    ? SizedBox(
+                        width: 350,
+                        height: 150,
+                        /*decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(50.0)),*/
+                        child: NoDataContainer())
+                    : ListView.builder(
                         itemCount: products.length,
                         itemBuilder: (BuildContext context, int index) {
                           return SimpleCard(
                               onClick: () {
-                                onClickCard(products[index]);
+                                onClickCard();
                               },
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -92,13 +90,6 @@ class _CartPageState extends State<CartPage> {
                                           ]),
                                     )
                                   ]));
-                        });
-                  }
-                  return SizedBox(
-                      width: 350,
-                      height: 120,
-                      /*decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(50.0)),*/
-                      child: NoDataContainer());
-                })));
+                        }))));
   }
 }

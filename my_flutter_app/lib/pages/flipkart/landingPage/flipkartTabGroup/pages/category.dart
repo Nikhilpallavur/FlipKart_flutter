@@ -27,7 +27,7 @@ class _CategoryState extends State<Category> {
   Widget build(BuildContext context) {
     return Container(
       // height: MediaQuery.of(context).size.height- 200,
-      height: MediaQuery.of(context).size.height - 173,
+      height: MediaQuery.of(context).size.height,
 
       child: GridView.custom(
           shrinkWrap: true,
